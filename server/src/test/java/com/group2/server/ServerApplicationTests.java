@@ -1,10 +1,10 @@
-package com.group2.client;
+package com.group2.server;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ClientApplicationTests {
+class ServerApplicationTests {
 
 	@Test
 	void contextLoads() {

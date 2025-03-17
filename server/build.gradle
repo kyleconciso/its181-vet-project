@@ -20,9 +20,14 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	runtimeOnly 'com.mysql:mysql-connector-j'
+	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	compileOnly 'org.projectlombok:lombok:1.18.36'
+	annotationProcessor 'org.projectlombok:lombok:1.18.36'
+	implementation 'org.springframework.security:spring-security-core:6.4.3'
+	implementation 'org.springframework.security:spring-security-config:6.4.3'
+	implementation 'org.springframework.security:spring-security-web:6.4.3'
 }
 
 tasks.named('test') {
