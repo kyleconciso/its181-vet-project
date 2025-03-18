@@ -3,45 +3,25 @@ package com.group2.client
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import com.group2.client.ui.navigation.NavGraph
 import com.group2.client.ui.theme.ClientTheme
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.group2.client.ui.viewmodel.SharedViewModel // Import SharedViewModel
+import com.group2.client.ui.viewmodel.AdminViewModel
+import com.group2.client.ui.viewmodel.UserViewModel
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             ClientTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                // Instantiate the SharedViewModel using viewModel()
+                val sharedViewModel: SharedViewModel = viewModel()
+                val adminViewModel: AdminViewModel = viewModel()
+                val userViewModel: UserViewModel = viewModel()
+                NavGraph(sharedViewModel = sharedViewModel, adminViewModel, userViewModel)
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ClientTheme {
-        Greeting("Android")
     }
 }
